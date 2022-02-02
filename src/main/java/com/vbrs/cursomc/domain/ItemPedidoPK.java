@@ -1,8 +1,6 @@
 package com.vbrs.cursomc.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
-
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
