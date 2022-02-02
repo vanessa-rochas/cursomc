@@ -3,7 +3,6 @@ package com.vbrs.cursomc.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,15 +27,13 @@ public class Pedido implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date instante;
 
-	
-	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy = "pedido" )
 	private Pagamento pagamento;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
